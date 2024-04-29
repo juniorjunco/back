@@ -35,13 +35,12 @@ const upload = multer({ storage: storage });
 // Creating Upload Endpoint for images
 app.use('/images',express.static('upload/images'))
 
-app.post('/upload',upload.single('product'),(req,res)=>{
-    res.json({
-        success:1,
-        image_url:`https://backend-production-0d28.up.railway.app/:${port}/images/${req.file.filename}`
-    })
-
-})
+app.post('/upload', upload.single('product'), (req, res) => {
+  res.json({
+      success: 1,
+      image_url: `https://backend-production-0d28.up.railway.app/images/${req.file.filename}`
+  });
+});
 
 // Define Product Schema
 const Product = mongoose.model('Product', {
